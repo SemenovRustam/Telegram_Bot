@@ -8,7 +8,7 @@ public class NoCommand implements Command {
     private SendBotMessageServiceImpl sendBotMessageService;
 
 
-    public static final String NO_MESSAGE = "Я поддрживаю команды, начинающиеся со слеша(/). \n"
+    public static final String NO_MESSAGE = "Я поддерживаю команды, начинающиеся со слеша(/). \n"
             +"Чтобы посмотреть список всех команд нажмите /help.";
 
 

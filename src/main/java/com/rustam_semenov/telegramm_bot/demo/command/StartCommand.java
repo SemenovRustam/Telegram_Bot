@@ -7,7 +7,7 @@ public class StartCommand implements Command {
 
     private final SendBotMessageServiceImpl sendBotMessageService;
 
-    public static final  String  START_MESSAGE = "Hello world!  Я еще маленький и только учусь!";
+    public static final  String  START_MESSAGE = "Hello world! Я еще маленький и только учусь!";
 
 
     public StartCommand(SendBotMessageServiceImpl sendBotMessageService) {
