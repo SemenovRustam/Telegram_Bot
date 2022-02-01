@@ -1,9 +1,12 @@
 package com.rustam_semenov.telegramm_bot.demo.bot;
 
 import com.rustam_semenov.telegramm_bot.demo.command.CommandContainer;
+import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageService;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageServiceImpl;
+import com.rustam_semenov.telegramm_bot.demo.service.TelegramUserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -29,8 +32,9 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public TelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    @Autowired
+    public TelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
     }
 
     @Override

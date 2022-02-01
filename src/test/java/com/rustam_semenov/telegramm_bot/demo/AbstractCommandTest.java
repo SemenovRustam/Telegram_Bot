@@ -4,6 +4,7 @@ import com.rustam_semenov.telegramm_bot.demo.bot.TelegramBot;
 import com.rustam_semenov.telegramm_bot.demo.command.Command;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageService;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageServiceImpl;
+import com.rustam_semenov.telegramm_bot.demo.service.TelegramUserService;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -20,6 +21,8 @@ abstract class AbstractCommandTest {
     abstract String getCommandMessage();
 
     abstract Command getCommand();
+
+    protected TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
 
     public void shouldProperlyExecuteCommand() throws TelegramApiException{
         Long chatId = 1234567898797L;

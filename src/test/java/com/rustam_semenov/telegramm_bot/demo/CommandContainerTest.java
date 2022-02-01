@@ -6,6 +6,7 @@ import com.rustam_semenov.telegramm_bot.demo.command.CommandName;
 import com.rustam_semenov.telegramm_bot.demo.command.UnknownCommand;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageService;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageServiceImpl;
+import com.rustam_semenov.telegramm_bot.demo.service.TelegramUserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,9 +21,10 @@ public class CommandContainerTest {
     private CommandContainer commandContainer;
 
     @BeforeEach
-    public void init(){
-        SendBotMessageServiceImpl sendBotMessageService = Mockito.mock(SendBotMessageServiceImpl.class);
-        commandContainer = new CommandContainer(sendBotMessageService);
+    public void init() {
+        SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
+        TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
     }
 
     @Test
