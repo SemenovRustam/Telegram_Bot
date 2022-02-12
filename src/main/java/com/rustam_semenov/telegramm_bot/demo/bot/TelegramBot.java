@@ -1,6 +1,8 @@
 package com.rustam_semenov.telegramm_bot.demo.bot;
 
 import com.rustam_semenov.telegramm_bot.demo.command.CommandContainer;
+import com.rustam_semenov.telegramm_bot.demo.javarushclient.dto.JavaRushGroupClient;
+import com.rustam_semenov.telegramm_bot.demo.service.GroupSubService;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageService;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageServiceImpl;
 import com.rustam_semenov.telegramm_bot.demo.service.TelegramUserService;
@@ -33,8 +35,8 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final CommandContainer commandContainer;
 
     @Autowired
-    public TelegramBot(TelegramUserService telegramUserService) {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
+    public TelegramBot(TelegramUserService telegramUserService, JavaRushGroupClient groupClient, GroupSubService groupSubService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService, groupClient, groupSubService);
     }
 
     @Override

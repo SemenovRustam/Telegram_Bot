@@ -4,6 +4,8 @@ import com.rustam_semenov.telegramm_bot.demo.command.Command;
 import com.rustam_semenov.telegramm_bot.demo.command.CommandContainer;
 import com.rustam_semenov.telegramm_bot.demo.command.CommandName;
 import com.rustam_semenov.telegramm_bot.demo.command.UnknownCommand;
+import com.rustam_semenov.telegramm_bot.demo.javarushclient.dto.JavaRushGroupClient;
+import com.rustam_semenov.telegramm_bot.demo.service.GroupSubService;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageService;
 import com.rustam_semenov.telegramm_bot.demo.service.SendBotMessageServiceImpl;
 import com.rustam_semenov.telegramm_bot.demo.service.TelegramUserService;
@@ -24,7 +26,9 @@ public class CommandContainerTest {
     public void init() {
         SendBotMessageService sendBotMessageService = Mockito.mock(SendBotMessageService.class);
         TelegramUserService telegramUserService = Mockito.mock(TelegramUserService.class);
-        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService);
+        JavaRushGroupClient groupClient = Mockito.mock(JavaRushGroupClient.class);
+        GroupSubService groupSubService = Mockito.mock(GroupSubService.class);
+        commandContainer = new CommandContainer(sendBotMessageService, telegramUserService, groupClient, groupSubService);
     }
 
     @Test
